@@ -1,5 +1,7 @@
 *.aux
 *.log
 
+a.out
+
 favicon.png
 physarium/
