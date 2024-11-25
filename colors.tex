@@ -3,24 +3,36 @@
 % \usepackage[left=-2mm,top=2mm,right=0mm,bottom=0mm]{geometry}
 \usepackage{tikz}
 \usepackage{xcolor}
-\definecolor{pGreen}{HTML}{007b3a}
-\definecolor{pRed}{HTML}{cf0921}
-\definecolor{sgbGrey}{HTML}{35383d}
-\definecolor{sgbGreen2}{HTML}{d1e3bb}
-\definecolor{sgbGreen1}{HTML}{55A577}
-\definecolor{sgbGreen3}{HTML}{b4cc99}
+\definecolor{pGreen}{HTML}{006633}
+\definecolor{sgbGreen1}{HTML}{66cc99}
+\definecolor{sgbGreen2}{HTML}{ccffcc}
+
+\definecolor{pRed}{HTML}{cc0033}
+\definecolor{sgbRed}{HTML}{cc6688}
+\definecolor{sgbRed2}{HTML}{FF99CC}
+
+\definecolor{sgbGrey}{HTML}{333333}
+\definecolor{sgbGrey2}{HTML}{996666}
+\definecolor{sgbGrey3}{HTML}{999966}
+
 \begin{document}
+
 % \thispagestyle{empty}
 
 \begin{tikzpicture}
-    \foreach \x [count=\xi] in {sgbGreen2,sgbGreen3,sgbGreen1,pGreen}{
+    \foreach \x [count=\xi] in {sgbGreen2,sgbGreen1,pGreen}{
         \filldraw[\x] ({2*\xi},0) --++ (0:2) --++ (90:2);
     };
-    \foreach \x [count=\xi] in {sgbGreen2,sgbGreen3,sgbGreen1,pRed}{
+    \foreach \x [count=\xi] in {sgbRed2,sgbRed,pRed}{
         \filldraw[\x] ({2*\xi},2) --++ (0:2) --++ (90:2);
     };
-    \foreach \x [count=\xi] in {sgbGreen2,sgbGreen3,sgbGreen1,sgbGrey}{
+    \foreach \x [count=\xi] in {sgbGrey3,sgbGrey2,sgbGrey}{
         \filldraw[\x] ({2*\xi},4) --++ (0:2) --++ (90:2);
     };
+    \draw[very thick,white] (7,0) --++ (90:5);
+    \draw[very thick,white] (2,5) --++ (0:5);
+    \draw[very thick,white] (2,6) -- (8,0);
+    \draw[very thick,black] (2,4) -- (6,0);
+    \draw[very thick,black] (2,2) -- (4,0);
 \end{tikzpicture}
 \end{document}
