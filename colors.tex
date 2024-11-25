@@ -1,0 +1,26 @@
+\documentclass[border=0]{standalone}
+% \documentclass[a4paper]{article}
+% \usepackage[left=-2mm,top=2mm,right=0mm,bottom=0mm]{geometry}
+\usepackage{tikz}
+\usepackage{xcolor}
+\definecolor{pGreen}{HTML}{007b3a}
+\definecolor{pRed}{HTML}{cf0921}
+\definecolor{sgbGrey}{HTML}{35383d}
+\definecolor{sgbGreen2}{HTML}{d1e3bb}
+\definecolor{sgbGreen1}{HTML}{55A577}
+\definecolor{sgbGreen3}{HTML}{b4cc99}
+\begin{document}
+% \thispagestyle{empty}
+
+\begin{tikzpicture}
+    \foreach \x [count=\xi] in {sgbGreen2,sgbGreen3,sgbGreen1,pGreen}{
+        \filldraw[\x] ({2*\xi},0) --++ (0:2) --++ (90:2);
+    };
+    \foreach \x [count=\xi] in {sgbGreen2,sgbGreen3,sgbGreen1,pRed}{
+        \filldraw[\x] ({2*\xi},2) --++ (0:2) --++ (90:2);
+    };
+    \foreach \x [count=\xi] in {sgbGreen2,sgbGreen3,sgbGreen1,sgbGrey}{
+        \filldraw[\x] ({2*\xi},4) --++ (0:2) --++ (90:2);
+    };
+\end{tikzpicture}
+\end{document}
