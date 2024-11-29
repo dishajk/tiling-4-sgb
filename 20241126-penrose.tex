@@ -3,16 +3,221 @@
 \usepackage{hyperref}
 \usepackage{pdfpages}
 \usepackage{siunitx}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{physics}
+\usetikzlibrary{shapes.geometric,angles,quotes}
 
-\title{Tiling}
+\definecolor{pGreen}{HTML}{006633}
+\definecolor{sgbGreen1}{HTML}{66cc99}
+\definecolor{sgbGreen2}{HTML}{ccffcc}
+
+\definecolor{pRed}{HTML}{cc0033}
+\definecolor{sgbRed}{HTML}{cc6688}
+\definecolor{sgbRed2}{HTML}{FF99CC}
+
+\definecolor{sgbGrey}{HTML}{333333}
+\definecolor{sgbGrey2}{HTML}{996666}
+\definecolor{sgbGrey3}{HTML}{999966}
+
+\title{Exploring Modern Mathematics Through the Art of Tiling}
 \author[dishajk]{Disha Kuzhively\\ \texttt{disha.jk@icts.res.in}}
 \institute{International Centre for Theoretical Sciences - TIFR, Bangalore}
-
+\date[Sci560]{Science Gallery Bangalore}
 \begin{document}
 \begin{frame}
     \titlepage
 \end{frame}
 \begin{frame}
+    \frametitle{Outline}
+    \tableofcontents[pausesections]
+\end{frame}
+\section{What is Tiling?}
+\begin{frame}
+    \frametitle{Tiling}
+    \begin{block}{What is Tiling?}    
+    Tiling is the covering of a surface using geometric shapes while ensuring there are \alert{no overlaps} and \alert{no gaps}.
+    \end{block}
+    \pause
+\only<2>{    \tikz \node[draw] at (0,0) {Picture of tiled floor/wall};
+
+    \tikz \node[draw] at (0,0) {Picture of checked fabric};
+
+    \tikz \node[draw] at (0,0) {Picture of folded origami tesselation};}
+    \only<3>{\tikz \node[draw] at (0,0) {Tiles with curved edges};}    
+\end{frame}
+\begin{frame}
+    \frametitle{Tiling with Convex Regular Polygons}
+    \only<1>{A convex regular polygon has $n$ straight edges and $n$ equal internal angles. It is convex because any line segment joining two vertices passes entirely through the polygon's interior.}
+    
+    \only<2>{Can you tile with convex regular polygons?} 
+    
+    \only<3-4,11-13>{How many \alert{edge to edge} tilings are possible using \alert{only one} type of tile?}
+
+    \only<14->{How many \alert{edge to edge} tilings are possible using \alert{more than one} type of tile?}
+
+    \only<1-3>{\tikz {\foreach \a in {3,...,6}{
+        \node[regular polygon, regular polygon sides=\a, fill=sgbGreen2, draw, minimum size=2.25cm] at (\a*2.25,0) {};
+        \node[regular polygon, regular polygon sides={\a+3}, draw, fill=sgbGreen2, minimum size=2.25cm] at (\a*2.25,-2.5) {};
+        }}}
+    
+    \only<4>{
+        \tikz \node[draw] at (0,0) {edge to edge tiling example};
+        \tikz \node[draw] at (0,0) {not edge to edge tiling example};}
+    
+    \only<5-10>{Internal angle of an $n$-sided polygon}
+    
+    \only<19>{Consider $m=3$}
+    
+    \begin{columns}
+        \begin{column}{0.4\textwidth}
+            \only<5>{
+                \tikz \node[regular polygon, regular polygon sides={11}, draw=sgbRed, minimum size=5cm] at (0,0) {11-gon};
+            }
+
+            \only<6>{
+                \tikz {\node[regular polygon, regular polygon sides={11}, draw=sgbRed, minimum size=5cm] at (0,0) {};
+                \foreach \angle in {0,...,10}{
+                \draw (0,0) -- ({90+\angle*360/11}:2.5);}
+                }
+            }
+
+            \only<7>{
+                \tikz{\node[regular polygon, regular polygon sides={11}, draw=sgbRed, minimum size=5cm] at (0,0) {};
+                \foreach \angle in {0,...,10}{
+                    \draw (0,0) -- ({90+\angle*360/11}:2.5);
+                    }
+                \filldraw[fill=sgbGreen2,draw=black] (0,0) -- (90:0.25) arc [start angle=90,end angle={90+360/11},radius=0.25];
+                \filldraw[fill=sgbGreen2,draw=black] (90:2.5) -- (90:2.25) arc [start angle=270,end angle={270-9*90/11},radius=0.25];
+                \filldraw[fill=sgbGreen2,draw=black] ({90+360/11}:2.5) -- ({90+360/11}:2.25) arc [start angle={270+360/11},end angle={270++360/11+9*90/11},radius=0.25];
+                }}
+
+            \only<8>{
+                \tikz{\node[regular polygon, regular polygon sides={11}, draw=sgbRed, minimum size=5cm] at (0,0) {};
+                \foreach \angle in {0,...,10}{
+                    \draw (0,0) -- ({90+\angle*360/11}:2.5);
+                    }
+                \filldraw[fill=sgbGreen2,draw=black] (0,0) -- (90:0.25) arc [start angle=90,end angle=450,radius=0.25];
+                \foreach \angle in {0,...,10}{
+                \filldraw[fill=sgbGreen2,draw=black] ({90+\angle*360/11}:2.5) -- ({90+\angle*360/11}:2.25) arc [start angle={270+\angle*360/11},end angle={270+\angle*360/11-9*90/11},radius=0.25];
+                \filldraw[fill=sgbGreen2,draw=black] ({90+360/11+\angle*360/11}:2.5) -- ({90+360/11+\angle*360/11}:2.25) arc [start angle={270+\angle*360/11+360/11},end angle={270+\angle*360/11+360/11+9*90/11},radius=0.25];}}
+                }
+            
+            \only<9>{
+                \tikz{\node[regular polygon, regular polygon sides={11}, draw=sgbRed, minimum size=5cm] at (0,0) {};
+                \foreach \angle in {0,...,10}{
+                    \draw (0,0) -- ({90+\angle*360/11}:2.5);
+                }
+                \foreach \angle in {0,...,10}{
+                    \filldraw[fill=sgbGreen2,draw=black] ({90+\angle*360/11}:2.5) -- ({90+\angle*360/11}:2.25) arc [start angle={270+\angle*360/11},end angle={270+\angle*360/11-9*90/11},radius=0.25];
+                    \filldraw[fill=sgbGreen2,draw=black] ({90+360/11+\angle*360/11}:2.5) -- ({90+360/11+\angle*360/11}:2.25) arc [start angle={270+\angle*360/11+360/11},end angle={270+\angle*360/11+360/11+9*90/11},radius=0.25];
+                    }}}
+        
+            \only<10>{
+                \tikz{\node[regular polygon, regular polygon sides={15}, draw=sgbRed, minimum size=5cm] at (0,0) {$n$-gon};
+                }}
+    
+            \only<11-12>{
+                \tikz{\foreach \angle in {0,...,4}{
+                        \draw (0,0) -- ({90+\angle*360/5}:2.5);}
+                    \foreach \angle[count=\ai] in {0,...,2}{
+                        \draw (0,0) ++ ({70+\angle*360/5}:2) node[left] {\ai};}
+                        \draw (0,0) ++ ({70+3*360/5}:2) node[left] {$\ldots$};
+                        \draw (0,0) ++ ({70+4*360/5}:2) node[left] {$m$};
+                        }}
+            \only<13>{
+                \tikz{
+                    \clip (0.1,0.1) rectangle (2.5,2.5);
+                    \foreach \row in {0,...,3}{
+                        \draw (0,{\row*sqrt(3)/2}) --++ (0:3);
+                        \draw (\row,0) --++ (60:4);
+                        \draw (\row,0) --++ (120:4);}}
+                \tikz{
+                \clip (0.1,0.1) rectangle (2.5,2.5);
+                \draw (0,0) grid (3,3);}
+                }
+        
+            \only<15-18>{
+                \tikz{
+                    \foreach \angle in {7, 15, 22, 29, 34}{
+                        \draw (0,0) -- ({10*\angle}:2);
+                    }
+                    \foreach \angle[count=\ai] in {7, 15, 22}{
+                        \node at ({10*\angle+20}:2) {$n_\ai$-gon};
+                    }
+                    \node[left] at ({10*29+20}:2) {\ldots};
+                    \node[left] at ({10*34+20}:2) {$n_m$-gon};
+                }
+            }
+        \end{column}
+        \begin{column}{0.6\textwidth}
+            \only<6-9>{for $n$ = 11, we have 11 triangles.}
+            
+            \only<7-10>{Sum of angles of one triangle = $\pi$
+            
+            $\pi = \ang{180}$}
+            
+            \only<8-9>{Sum of angles of 11 triangles = $11\pi$}
+            
+            \only<9>{Sum of internal angles = $11\pi - 2\pi$
+            
+            Each internal angle  = $\flatfrac{\qty(11\pi - 2\pi)}{11}$}
+            
+            \only<10>{when we have $n$ triangles,
+
+            Sum of angles of $n$ triangles = $n\pi$
+
+            Sum of internal angles = $n\pi - 2\pi$}
+            
+            \only<10-12,16-18>{
+                Internal angle  = $\flatfrac{\qty(n - 2)\pi}{n} = A_n$
+            }
+            
+            \only<11-12>{
+                $m \times A_n = \ang{360} = 2\pi$
+            }
+            
+            \only<13>{
+                \tikzset{cell/.pic={
+                \draw (0,{sqrt(3)/4})--++(0:0.25) --++(60:0.5)--++(0:0.5)--++(300:0.5)--++(0:0.25);
+                \draw (0.25,{sqrt(3)/4})--++(300:0.5);
+                \draw (1.25,{sqrt(3)/4})--++(240:0.5);
+            }}
+            \tikz{
+            \clip (0.1,0.1) rectangle (4,3);
+            \foreach \x in {0,...,3}{
+                \foreach \y in {0,...,3}{
+                    \draw ({1.5*\x},{\y*sqrt(3)/2}) pic {cell};
+                }};}
+            }
+            
+            \only<12-13>{
+                \begin{equation*}
+                \frac{1}{m} + \frac{1}{n} = \frac{1}{2}
+                \end{equation*}
+            }
+            \only<16-18>{
+                \begin{equation*}
+                    A_{n_1}+A_{n_2}+A_{n_3}+\ldots+A_{n_m} = 2\pi
+                \end{equation*}
+            }
+            \only<17->{
+                \begin{equation*}
+                    \frac{m}{2} - \qty(\frac{1}{n_1}+\frac{1}{n_2}+\frac{1}{n_3}+\ldots+\frac{1}{n_m})=1
+                \end{equation*}
+            }
+            \only<19->{
+                \begin{equation*}
+                    \frac{3}{2} - \qty(\frac{1}{n_1}+\frac{1}{n_2}+\frac{1}{n_3})=1
+                \end{equation*}
+            }
+        \end{column}
+    \end{columns}    
+\end{frame}
+
+\begin{frame}
+\end{frame}
+\begin{frame}    
     \frametitle{Escher}
     Take from sswp
     \begin{columns}
@@ -128,50 +333,6 @@ Vigyan Pratibha Learning Unit - \url{https://vigyanpratibha.in/}
         \begin{column}{0.45\textwidth}
         \end{column}
     \end{columns}
-\end{frame}
-\begin{frame}
-    \frametitle{Make a Pinhole Camera}
-    \begin{columns}
-        \begin{column}{0.45\textwidth}
-            \begin{block}{Step 3}
-                Cover one end of the tube with the marked tracing sheet. Let us call this the \alert{image tube}.
-            \end{block}
-        \end{column}
-        \begin{column}{0.45\textwidth}
-            \begin{block}{Step 4}
-                Roll another sheet of black chart paper into a cylindrical tube such that it is slightly larger in diameter than the \alert{image tube}, so that the \alert{image tube} can slide inside smoothly.
-            \end{block}
-        \end{column}
-    \end{columns}
-\end{frame}
-\begin{frame}
-    \frametitle{Make a Pinhole Camera}
-    \begin{columns}
-        \begin{column}{0.45\textwidth}
-            \begin{block}{Step 5}
-                Cover one end of the secnd tube with aluminium foil. Let us call this the \alert{pinhole tube}. Poke a hole on the aluminium foil using a safety pin.
-            \end{block}
-        \end{column}
-        \begin{column}{0.45\textwidth}
-            \begin{block}{Step 6}
-                Insert \alert{image tube} inside \alert{pinhole tube} till the screen just touches the pinhole. Mark apoint $O$ on the \alert{image tube} where \alert{pinhole tube} ends. This is to help measure the distance between the screen and pinhole($l$).
-            \end{block}
-        \end{column}
-    \end{columns}
-\end{frame}
-\begin{frame}
-% %\includegraphics[width=0.75\textwidth]{schematic}\footnote{Vigyan Pratibha Learning Unit}
-
-\uncover<2>{
-    What has changed from the object to the image?
-
-    Change the following and see what happens.
-    \begin{enumerate}
-    \item Distance between the pinhole and the screen.
-    \item Brightness of the object
-    \item Larger pinhole size
-    \end{enumerate}
-    }
 \end{frame}
 \begin{frame}
 \frametitle{Natural Pinhole Camera Effect}
