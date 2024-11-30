@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+                     "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg id          = "Tiling_Dual_Semiregular_V4_6_12_Bisected_Hexagonal"    
+     version     = "1.1" 
+     xmlns       = "http://www.w3.org/2000/svg" 
+     xmlns:xlink = "http://www.w3.org/1999/xlink" 
+     width       = "400" 
+     height      = "400">
+     
+<defs>
+   <polygon id           = "A_Hexagon" 
+   	        stroke       = "#000000" 
+   	        stroke-width = "2" 
+   	        fill-rule    = "evenodd"
+   	        points       = "0, 45  156, 45  156,  0 
+   	                       78,  0   78, 90    0, 90 
+   	                        0, 45   78, 90  156, 45 
+   	                       78,  0    0, 45   26, 90 
+   	                       78,  0  130, 90  156, 45 
+   	                      130,  0   78, 90   26,  0" />
+   	        
+   <pattern id               = "The_Pattern" 
+   	        patternUnits     = "userSpaceOnUse" 
+   	        patternTransform = "translate(4,-4)" 
+   	        width            = "156" 
+   	        height           = "90">
+      <use xlink:href="#A_Hexagon" fill="#AAAAEE"/>
+      <use xlink:href="#A_Hexagon" fill="#CC88CC"  transform="translate(156)scale(-1,1)" />
+   </pattern>
+   
+</defs>
+
+<rect x            = "2"
+      y            = "2"
+      height       = "394" 
+      width        = "394"
+      stroke       = "#000000"
+      stroke-width = "2" 
+      fill         = "url(#The_Pattern)"/>
+      
+</svg>

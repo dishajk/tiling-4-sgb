@@ -6,7 +6,11 @@
 \usepackage{tikz}
 \usepackage{xcolor}
 \usepackage{physics}
-\usetikzlibrary{shapes.geometric,angles,quotes}
+\usepackage{multirow}
+\usepackage{graphics}
+\usepackage{svg}
+
+\usetikzlibrary{shapes.geometric,angles,quotes,tikzmark}
 
 \definecolor{pGreen}{HTML}{006633}
 \definecolor{sgbGreen1}{HTML}{66cc99}
@@ -20,6 +24,19 @@
 \definecolor{sgbGrey2}{HTML}{996666}
 \definecolor{sgbGrey3}{HTML}{999966}
 
+\tikzset{3-gon/.pic={
+                \draw[fill=sgbGreen1] (0,0) -- (0:3) -- (50:4) -- cycle;
+            },
+            180deg/.pic={
+                \draw[->] (0,0) arc[start angle = 180, end angle=0, radius=5mm] node [left] {$\ang{180}$};
+            },
+            4-gon/.pic={
+                \draw[ultra thick, pRed] (0,0) -- (0:3);
+                \draw[ultra thick, pGreen] (0:3) -- (20:4);
+                \draw[ultra thick, sgbGrey] (20:4) -- (50:2);
+                \draw[ultra thick, sgbGreen1] (50:2) -- (0,0);
+            }}
+
 \title{Exploring Modern Mathematics Through the Art of Tiling}
 \author[dishajk]{Disha Kuzhively\\ \texttt{disha.jk@icts.res.in}}
 \institute{International Centre for Theoretical Sciences - TIFR, Bangalore}
@@ -29,22 +46,60 @@
     \titlepage
 \end{frame}
 \begin{frame}
-    \frametitle{Outline}
-    \tableofcontents[pausesections]
+    \begin{figure}
+        \includegraphics[height=0.8\textheight]{bird-fish}
+        \caption{Bird Fish, 1938, MC Escher}    
+    \end{figure}
+\end{frame}
+\begin{frame}
+    \begin{figure}
+        \includegraphics[height=0.5\textheight]{corridor1}
+        \includegraphics[height=0.5\textheight]{corridor2}
+        \includegraphics[height=0.5\textheight]{corridor3}
+        \caption{Corridors, 2024, Photo: Aysha Mahira}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \begin{figure}
+        \includegraphics[height=0.7\textheight]{Splendor-of-kashmir-deep-green-kani-pashmina-shawl-by-Varuna-Anand-2}
+        \caption{Kani pashmina shawl, Varuna Anand}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \begin{figure}
+        \includegraphics[height=0.7\textheight]{Bibi-Ka-Maqbara-_net}
+        \caption{Jali at Bibi Ka Maqbara in Aurangabad. By Niranjan R. Upasani - Own work, CC BY-SA 3.0}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \begin{figure}
+        \includegraphics[height=0.7\textheight]{45square}
+        \caption{4 - 5 square origami tessellation, pattern from Eric Gjerde, folded by dishajk}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+\begin{figure}
+    \includegraphics[height=0.7\textheight]{Western_honey_bee_on_a_honeycomb}
+    \caption{ AWestern honey bee on a honeycomb, Matthew T Rader, \url{https://matthewtrader.com}, CC BY-SA 4.0}
+\end{figure}
+\end{frame}
+\begin{frame}
+    \begin{figure}
+        \includegraphics[height=0.5\textheight]{Quasicrystal1}
+        \caption{Potential energy surface $\qty(8.6 \times 8.6 nm^2)$ for silver on i-Al-Pd-Mn Quantumcrystal, Physical Review B 75, no. 6 (2007): 064205}
+    \end{figure}
+    Notice that its \alert{ordered} but \alert{not periodic}!
 \end{frame}
 \section{What is Tiling?}
 \begin{frame}
     \frametitle{Tiling}
     \begin{block}{What is Tiling?}    
     Tiling is the covering of a surface using geometric shapes while ensuring there are \alert{no overlaps} and \alert{no gaps}.
-    \end{block}
-    \pause
-\only<2>{    \tikz \node[draw] at (0,0) {Picture of tiled floor/wall};
-
-    \tikz \node[draw] at (0,0) {Picture of checked fabric};
-
-    \tikz \node[draw] at (0,0) {Picture of folded origami tesselation};}
-    \only<3>{\tikz \node[draw] at (0,0) {Tiles with curved edges};}    
+    \end{block}  
 \end{frame}
 \begin{frame}
     \frametitle{Tiling with Convex Regular Polygons}
@@ -62,13 +117,42 @@
         }}}
     
     \only<4>{
+        \begin{columns}
+            \begin{column}{0.4\textwidth}
+                \begin{figure}
+                \includesvg[scale=0.25]{Academ_Periodic_tiling_by_squares_of_two_different_sizes}
+                \caption{Non edge to edge tiling, in this case a Pythagorean tiling. By Arthur Baelde}
+                \end{figure}
+            \end{column}
+            \begin{column}{0.4\textwidth}
+                \begin{figure}
+                    \includesvg[scale=0.45]{Tiling_snub_3-6_left_simple}
+                    \caption{Edge to edge tiling}
+                \end{figure}
+            \end{column}
+        \end{columns}
         \tikz \node[draw] at (0,0) {edge to edge tiling example};
         \tikz \node[draw] at (0,0) {not edge to edge tiling example};}
     
     \only<5-10>{Internal angle of an $n$-sided polygon}
     
-    \only<19>{Consider $m=3$}
+    \only<19-21>{Consider $m=3$}
     
+    \only<22>{
+        Archimedean tilings
+        
+        \begin{tabular}{ l|l|l|l|l|l }
+            $m$ & $n_1$ & $n_2$ & $n_3$ & $n_4$ & $n_5$ \\\hline
+            \multirow{3}{2em}{3}& 3 & 12 & 12 & & \\  
+            &4 & 6 & 12 & & \\
+            &4 & 8 & 8 & &\\ \hline
+            \multirow{3}{2em}{4} & 3 & 6 & 3 & 6 & \\
+            & 3 & 4 & 6 & 4 & \\\hline
+            \multirow{3}{2em}{5} &3 & 3 & 4 & 3 & 4\\
+            &3 & 3 & 3 & 4 & 4\\
+            & 3 & 3 & 3 & 3 & 6
+           \end{tabular}
+    }
     \begin{columns}
         \begin{column}{0.4\textwidth}
             \only<5>{
@@ -149,6 +233,39 @@
                     \node[left] at ({10*34+20}:2) {$n_m$-gon};
                 }
             }
+            \only<20>{
+                \begin{center}
+                    \begin{tabular}{ l|l|l }
+                     $n_1$ & $n_2$ & $n_3$ \\\hline 
+                     3 & 12 & 12 \\  
+                     4 & 6 & 12 \\
+                     4 & 8 & 8 \\
+                     3 & 7 &42 \\
+                     3 & 8 &24 \\
+                     3 & 9 &18 \\
+                     3 & 10 &15 \\
+                     4 & 5 &20 \\
+                     5 & 5 &10 
+                    \end{tabular}
+                \end{center}
+            }
+            \only<21>{
+                \begin{center}
+                    \begin{tabular}{ l|l|l }
+                     $n_1$ & $n_2$ & $n_3$ \\\hline 
+                     3 & 12 & 12 \\  
+                     4 & 6 & 12 \\
+                     4 & 8 & 8 \\
+                     \tikzmark{start}3 & 7 &42 \\
+                     3 & 8 &24 \\
+                     3 & 9 &18 \\
+                     3 & 10 &15 \\
+                     4 & 5 &20 \\
+                     5 & 5 &10\tikzmark{end} 
+                    \end{tabular}
+                    \tikz[remember picture]\draw[overlay] ([yshift=.35em]pic cs:start) -- ([yshift=.35em]pic cs:end);
+                \end{center}
+            }
         \end{column}
         \begin{column}{0.6\textwidth}
             \only<6-9>{for $n$ = 11, we have 11 triangles.}
@@ -201,12 +318,12 @@
                     A_{n_1}+A_{n_2}+A_{n_3}+\ldots+A_{n_m} = 2\pi
                 \end{equation*}
             }
-            \only<17->{
+            \only<17-21>{
                 \begin{equation*}
                     \frac{m}{2} - \qty(\frac{1}{n_1}+\frac{1}{n_2}+\frac{1}{n_3}+\ldots+\frac{1}{n_m})=1
                 \end{equation*}
             }
-            \only<19->{
+            \only<19-21>{
                 \begin{equation*}
                     \frac{3}{2} - \qty(\frac{1}{n_1}+\frac{1}{n_2}+\frac{1}{n_3})=1
                 \end{equation*}
@@ -216,23 +333,175 @@
 \end{frame}
 
 \begin{frame}
+    \frametitle{Tiling with Convex non-Regular Polygons}
+    \only<1>{\begin{itemize}
+    % \item Convex polygons of more than six sides \alert{cannot} tile the plane.\footnote{Can be showed using Euler's Formula}
+
+    \item Let's look at tilings using polygons of sides 3 (triangles), 4 (quadrilaterals), 5 (pentagons), and 6 (hexagons)
+    \end{itemize}}
+
+    \only<2-4>{1. Tiling with non equilateral triangles}
+
+    \only<2-3>{
+        \tikz {\draw (0,0) pic {3-gon};
+        }
+    }
+    \only<3>{
+        \tikz {\draw (3.5,{2*sin(59)}) pic {180deg};
+        \draw (8,{4*sin(50)}) pic[rotate=180] {3-gon};
+        }
+    
+        Parallelogram
+    }
+
+    \only<4>{
+        \tikz {
+            \foreach \x in {0,1,2}{
+                \foreach \y in {0,1}{
+                    \draw ({\x*3},{4*sin(50)*\y}) pic {3-gon};
+                    \draw ({\x*3+4*cos(50)},{(\y+1)*4*sin(50)}) pic[rotate=180] {3-gon};
+                }
+            }
+        }
+    }
+    \only<5-7>{2. Tiling with quadrilaterals (4 sided figures)}
+    \only<5-6>{
+        \tikz{\draw (0,0) pic {4-gon};
+        }
+    }
+    \only<6>{
+        \tikz {\draw (0,0) pic {180deg};
+        \draw ({1.75+4*cos(20)},{2*sin(50)}) pic[rotate=180] {4-gon};
+        }
+    }
+    \only<7>{
+        \tikz{
+            \foreach \x in {0}{
+                \foreach \y in {0}{
+                    \draw (\x,\y) pic {4-gon};
+                    \draw ({\x+3},\y) pic[rotate=180] {4-gon};
+        }}}
+        Hexagon with equal and parallel opposite edges
+    }
+    \only<8>{3. Tiling with pentagons
+    
+    }
+    \only<9>{4. Tiling with hexagons (1918, Reinhardt)
+    
+    }
+    \only<10>{Conway Criterion}
+    \only<11>{Domino tiling}
+\end{frame}
+\begin{frame}
+    Break 1
+\end{frame}
+\begin{frame}
+    \frametitle{Periodic vs. non-priodic}
+    \begin{itemize}
+        \item<1-4> In peiodic tiling, one can define a region as a 'unit cell' and the unit cell can then be used to tile the plane by translation alone - i.e. without rotating or reflecting it.
+        \item<2-4> Some shapes can tile only periodically - e.g. regular hexagon
+        \item<3-4> Some shapes can be tiled in both ways - e.g. isoceles triangles - Central tessellations
+        \item<4-> Are there shapes that can tile \alert{only} non-periodically?
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Wang's Conjecture}
+
+    Wang's conjecture states that if a set of tiles can tile the plane, then they can always be arranged to do so periodically (Wang 1961)
+
+    Such tiling will have a decision procedure relating this to decision questions in symbolic logic
+    \only<2>{
+
+    Wang's conjecture was falsified in 1964 by R Berger by constructing a set of 20,426 tiles that tiles only periodically. He later reduced this to 104.
+
+    D Knuth brought this number down to 92.
+
+    Ultimately Penrose proposed a set 6 non-square tiles using which one can tile non-periodically.}
+    \only<1>{
+        \includesvg{WangsConjecture11Tiling_1000}
+    }
 \end{frame}
 \begin{frame}    
-    \frametitle{Escher}
-    Take from sswp
+\frametitle{Penrose Tiles}
+\begin{columns}
+    \begin{column}{0.45\textwidth}    
+    \includesvg[scale=0.3]{penrose-kite-single}
+Kite    
+\end{column}
+    \begin{column}{0.45\textwidth}    
+            \includesvg[scale=0.3]{penrose-dart-single}
+        Dart
+    \end{column}
+\end{columns}
+\end{frame}
+\begin{frame}    
+    \frametitle{Penrose Tiles}
     \begin{columns}
         \begin{column}{0.45\textwidth}    
+                \includesvg[scale=0.15]{penrose-kite-single}
+            Kite
         \end{column}
         \begin{column}{0.45\textwidth}    
+                \includesvg[scale=0.15]{penrose-dart-single}
+            Dart
         \end{column}
     \end{columns}
+    \vspace{2cm}
+
+        \only<1>{Task 1: Study the angles.} 
+        \only<2>{Task 2: Tiling. To force aperiodicity, ensure that abutting edges join same type of arcs (either dashed or dotted).}
+        \only<3>{Task 3: What's the ratio of kites and darts?}
+        \only<4>{Task 4: Symmetry?}
+        \only<5>{Task 5: Prove that the number of Penrose tilings is uncountable.}
+
+        \only<6->{Homework: Colorability, Ammann bars}
+
+    \end{frame}
+    \begin{frame}    
+Break 2
+    
+    \end{frame}
+    \begin{frame}
+    \frametitle{The ein - stein problem}
+    \only<1-2>{Is there a \alert{single} tile that will tile the plane only aperiodically?}
+
+    \only<2>{
+        In March 2023, David Smith (amateur mathematician and retired print technician), Craig S. Kaplan (computer scientist and mathematician),  Joseph Samuel Myers (software developer), and Chaim Goodman-Strauss (mathematician) showed that the hat tile can be used to tile aperiodically
+        \begin{figure}
+        \includesvg[scale=0.35]{Smith_aperiodic_monotiling}
+        \caption{An aperiodic tiling using the hat tile by Smith, Myers, Kaplan and Goodman-Strauss, redrawn by Gringer. Note that the hat tile's mirror image is also considered}
+    \end{figure}
+    }
+    \only<3>{\begin{figure}
+        \includegraphics[height=0.7\textheight]{Aperiodic_monotile_tiling.png}
+        \caption{Aperiodic tiling with "Tile(1,1)" using only rotations and translations. David Smith, Joseph Samuel Myers, Craig S. Kaplan, and Chaim Goodman-Strauss, 2023}
+    \end{figure}}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Reference}
+    \begin{enumerate}
+        \item \url{https://cs.uwaterloo.ca/~csk/spectre/}
+        \item Smith, David, et al. "An aperiodic monotile." arXiv preprint arXiv:2303.10798 (2023).
+        \item Gardner, Martin. Penrose tiles to trapdoor ciphers: And the return of Dr Matrix. Cambridge University Press, 1997.
+        \item Smith, David, et al. "A chiral aperiodic monotile." arXiv preprint arXiv:2305.17743 (2023).
+    \end{enumerate}
 \end{frame}
 \begin{frame}
-\frametitle{Wang's Conjecture}
+    \frametitle{Ad break and Questions}
+    \begin{enumerate}
+        \item \url{icts.res.in/outreach}
+        \item Maths Circle India
+        \item MathSpark
+        \item PrISM
+        \item Public Lectures at ICTS 
+        \item Einstein Lectures
+        \item Write to \url{outreach@icts.res.in} or \url{disha.jk@icts.res.in}
+    \end{enumerate}
 \end{frame}
-\begin{frame}
-    \frametitle{Are there sets of tiles that tile only periodically?}
-\end{frame}
+\end{document}    
+
+
 \begin{frame}
 Escher's ascending descending - penrose staircases
 \end{frame}
@@ -246,150 +515,4 @@ uncountable meaning? - e.g. rational numbers are countable, real numbers are unc
 
 \end{frame}
 
-\begin{frame}
-\frametitle{Reference}
-Vigyan Pratibha Learning Unit - \url{https://vigyanpratibha.in/}
-\end{frame}
 
-\end{document}
-
-\begin{frame}
-    \frametitle{Create a volume measuring instrument}
-            \uncover<2>{
-                Least Count
-            }
-\end{frame}
-\begin{frame}
-\frametitle{Measure the volume of solids}
-\uncover<2>{
-    Overflow principle vs. Archimedes principle
-
-    Any object, whether fully or partially submerged in a fluid, is pushed up by a force equal to the weight of the fluid displaced by the object.
-
-    For a submerged object, the volume of displaced fluid equals the volume of the object.
-}
-\end{frame}
-\begin{frame}
-    \frametitle{Back to the Thirsty Crow}
-    \begin{columns}
-        \begin{column}{0.35\textwidth}    
-            %\includegraphics[height=0.55\textheight]{Crow}\footnote{Project Gutenberg}
-        \end{column}
-        \begin{column}{0.55\textwidth}    
-                \begin{enumerate}
-                    \item<2-> Does putting enough number of marbles always make the water level rise to the top of the container?
-                    \item<3-> If you do not succeed in raising the water level to the top, can you estimate the maximum marking to
-                    which the water level rises?
-                    \item<4-> Explain your observation.
-                \end{enumerate}
-        \end{column}
-    \end{columns}
-\end{frame}
-\begin{frame}
-    \frametitle{Back to the Thirsty Crow}
-    \begin{columns}
-        \begin{column}{0.35\textwidth}    
-            %\includegraphics[height=0.55\textheight]{Crow}\footnote{Project Gutenberg}
-        \end{column}
-        \begin{column}{0.55\textwidth}    
-                \begin{enumerate}
-                    \item[4] What happens if we use a bottle with a larger or smaller diameter, of if we use marbles that are larger or smaller? Does the packing fraction change?
-                    % \item[5]<2-> 
-                    % \item[6]<3-> 
-                \end{enumerate}
-        \end{column}
-    \end{columns}
-\end{frame}
-
-\begin{frame}
-\frametitle{Packing}
-\uncover<2>{We have a dining table that is $80 \unit{\centi\metre}$ wide and $120 \unit{\centi\metre}$ long. Our round dinner plates have a radius of $10 \unit{\centi\metre}$. How many plates can we put on our dinner table without stacking?}
-
-%\includegraphics[height=0.25\textheight]{cylinder}
-%\includegraphics[height=0.25\textheight]{plate}
-
-\end{frame}
-\begin{frame}
-    \frametitle{Packing in 3D space}
-    %\includegraphics[height=0.25\textheight]{watermelon}
-    %\includegraphics[height=0.25\textheight]{orange}
-    %\includegraphics[height=0.25\textheight]{orange2}
-    % %\includegraphics[height=0.75\textheight]{packing}
-\end{frame}
-\begin{frame}
-\frametitle{Packing Fraction}
-\begin{equation*}
-\frac{\text{Volume occupied by solids}}{\text{Total volume}}
-\end{equation*}
-\end{frame}
-\begin{frame}
-% \frametitle{Figurate numbers}
-
-
-\begin{frame}
-        \begin{columns}
-        \begin{column}{0.45\textwidth}
-        \end{column}
-        \begin{column}{0.45\textwidth}
-        \end{column}
-    \end{columns}
-\end{frame}
-\begin{frame}
-\frametitle{Natural Pinhole Camera Effect}
-\href{https://www.reddit.com/r/woahdude/comments/lzv1js/the_curtains_in_my_room_create_a_natural_pinhole}{\beamergotobutton{Link}}
-% \uncover<2>{
-% %\includegraphics[width=0.7\textwidth]{solar-eclipse-2010}\footnote{Picture taken by Guganeshan.T from Srilanka during the longest, annular Solar Eclipse of the millennium that happened on 15th January 2010.}}
-\end{frame}
-\begin{frame}
-    \frametitle{Worldwide Pinhole Photography Day}
-    \begin{block}{April 27, 2025}
-        Last Sunday in April is celebrated as the annual Worldwide Pinhole Photography Day.
-    \end{block}
-    \uncover<2>{
-        \begin{columns}
-            \begin{column}{0.5\textwidth}
-                Zehao Peng, "My University"
-                Shenzhen, Guangdong, China
-                % %\includegraphics[width=0.9\textwidth]{0611}\footnote{Copyright 2024 Zehao Peng}
-            \end{column}
-            \begin{column}{0.4\textwidth}
-                % %\includegraphics[width=0.9\textwidth]{0611_setup}
-            \end{column}
-        \end{columns}
-    }
-\end{frame}
-\begin{frame}
-    \begin{columns}
-        \begin{column}{0.5\textwidth}
-        \end{column}
-        \begin{column}{0.4\textwidth}
-        \end{column}
-    \end{columns}
-\end{frame}
-
-\begin{frame}
-    \begin{columns}
-        \begin{column}{0.5\textwidth}
-        \end{column}
-        \begin{column}{0.4\textwidth}
-        \end{column}
-    \end{columns}
-\end{frame}
-\begin{frame}
-    \begin{center}
-    \end{center}
-    \begin{columns}
-        \begin{column}{0.45\textwidth}    
-        \end{column}
-        \begin{column}{0.45\textwidth}    
-        \end{column}
-    \end{columns}
-\end{frame}
-\begin{frame}
-    \begin{columns}
-        \begin{column}{0.4\textwidth} 
-        \end{column}
-        \begin{column}{0.4\textwidth} 
-        \end{column}
-    \end{columns}
-\end{frame}

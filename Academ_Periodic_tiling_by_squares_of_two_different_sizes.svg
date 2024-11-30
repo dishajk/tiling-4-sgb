@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN"
+  "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd"><!--
+
+   Author: Yves Baelde
+
+   Aspect ratio  1/1 = 750/750
+
+--><svg viewBox="-7 6 1095 1095" width="750" height="750" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin" xml:space="preserve"><defs><pattern id="pg"
+ patternUnits="userSpaceOnUse" patternTransform="rotate(67.5)" width="198" height="198"><path fill="#968" d="M0 0h198v198H0"/><path fill="#fec" stroke="#100" stroke-width="6"
+ d="m-38 160 70 29-41 99m0 0 70-169 169 70m29-70-70-29 41-99m0 0-70 169L-9 90 32-9-9 90V0"/></pattern></defs><path fill="url(#pg)" d="M1088 6H-7v1095h1095"/></svg>
